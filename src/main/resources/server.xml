@@ -43,5 +43,4 @@
 		<property name="weight">1</property> </node> </cluster> -->
 	<!-- <quarantine> <host name="1.2.3.4"> <property name="user">test</property> 
 		</host> </quarantine> -->
-
 </mycat:server>

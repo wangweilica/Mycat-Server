@@ -2,7 +2,7 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
 
-	<schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100">
+	<schema name="TESTDB" checkSQLschema="false" dataNode="dn1" sqlMaxLimit="1000">
 		<!-- auto sharding by id (long) -->
 		<table name="travelrecord" dataNode="dn1,dn2,dn3" rule="auto-sharding-long" />
 
@@ -34,9 +34,9 @@
 	</schema>
 	<!-- <dataNode name="dn1$0-743" dataHost="localhost1" database="db$0-743" 
 		/> -->
-	<dataNode name="dn1" dataHost="localhost1" database="db1" />
-	<dataNode name="dn2" dataHost="localhost1" database="db2" />
-	<dataNode name="dn3" dataHost="localhost1" database="db3" />
+	<dataNode name="dn1" dataHost="localhost1" database="poseidon1" />
+	<dataNode name="dn2" dataHost="localhost1" database="poseidon2" />
+	<dataNode name="dn3" dataHost="localhost1" database="poseidon3" />
 	<!-- <dataNode name="jdbc_dn1" dataHost="jdbchost" database="db1" /> <dataNode 
 		name="jdbc_dn2" dataHost="jdbchost" database="db2" /> <dataNode name="jdbc_dn3" 
 		dataHost="jdbchost" database="db3" /> -->
@@ -44,13 +44,12 @@
 		writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
 		<heartbeat>select user()</heartbeat>
 		<!-- can have multi write hosts -->
-		<writeHost host="hostM1" url="localhost:3306" user="root"
-			password="123456">
+		<writeHost host="hostM1" url="192.168.13.119:3306" user="hiifit"
+			password="hiifit">
 			<!-- can have multi read hosts -->
-
 		</writeHost>
-		<writeHost host="hostS1" url="localhost:3316" user="root"
-			password="123456" />
+	<!-- 	<writeHost host="hostS1" url="localhost:3316" user="root"
+			password="123456" /> -->
 		<!-- <writeHost host="hostM2" url="localhost:3316" user="root" password="123456"/> -->
 	</dataHost>
 	<!-- <dataHost name="oracle1" maxCon="1000" minCon="1" balance="0" writeType="0" 
